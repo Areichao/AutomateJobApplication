@@ -46,6 +46,7 @@ You need a Google account and Google Chrome.
 
 **Copy the shared template sheet** (easiest, because the code comes with it)
 1. Open the template link you were given and click **Make a copy**. If it opens the sheet instead, use **File → Make a copy**.
+https://docs.google.com/spreadsheets/d/1Nr-5-e0G8Pw9V6XlDsSewkhDBJAYDThpSUAFoigpt_I/edit?usp=sharing
 2. Your copy should contain only the **Tracking Template** tab. If it has any rows or numbered tabs (`1-100`, etc.), delete them. 
 
 ### 2. Get a free Gemini API key
