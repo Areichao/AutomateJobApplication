@@ -38,6 +38,7 @@ function addJobRow(job) {
     // Set the Notes cell's font size to 1
     const notesCol = headers.indexOf('Notes') + 1; // +1 because getRange is 1-indexed
     sheet.getRange(newRow, notesCol).setFontSize(1);
+    return sheet.getName();
 }
 
 function getTargetSheet(ss) {

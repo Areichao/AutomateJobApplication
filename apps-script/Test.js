@@ -28,3 +28,17 @@ function testExtract() {
     const info = extractJobInfo(fakePage, 'https://example.com/job/456');
     Logger.log(JSON.stringify(info, null, 2));
 }
+
+function testWebApp() {
+    const fakeRequest = {
+        postData: {
+        contents: JSON.stringify({
+            secret: PropertiesService.getScriptProperties().getProperty('SHARED_SECRET'),
+            url: 'https://example.com/job/789',
+            text: 'Careers Home\nAcme Robotics\nSenior Firmware Engineer\nPay: $110,000 - $140,000\nWe build robots.\n© 2026',
+        }),
+        },
+    };
+    const result = doPost(fakeRequest);
+    Logger.log(result.getContent());
+}
