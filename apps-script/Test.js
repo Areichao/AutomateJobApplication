@@ -42,3 +42,7 @@ function testWebApp() {
     const result = doPost(fakeRequest);
     Logger.log(result.getContent());
 }
+
+function makeSecret() {
+    Logger.log(Utilities.getUuid());
+}
