@@ -7,3 +7,7 @@ Switch to the browser editor, refresh, pick testAddRow from the dropdown and cli
 Go to https://aistudio.google.com and sign in with your Google account.
 Click Get API key → Create API key.
 In Apps Script Project Settings → Script Properties, add GEMINI_API_KEY with that key.
+
+function makeSecret() {
+  Logger.log(Utilities.getUuid());
+}
