@@ -52,22 +52,28 @@ You need a Google account and Google Chrome.
 
 1. Go to **https://aistudio.google.com** and sign in.
 2. Click **Get API key → Create API key**.
+![alt text](image-1.png)
+![alt text](image.png)
+![alt text](image-2.png)
 3. When asked for a project, choose **Default Gemini Project**. Avoid any project that has billing turned on, or you'll be charged instead of using the free tier.
 4. Copy the key.
 
 ### 3. Save your key and a secret in the script
 
 1. In your sheet: **Extensions → Apps Script**.
+![alt text](image-3.png)
 2. Make a secret: open the **Test** file, pick **`makeSecret`** in the function dropdown at the top, and click **▶ Run**. Copy the long random string from the log at the bottom.
    *(The first time you run anything, Google asks for permission. Click **Review permissions → your account → Advanced → Go to … (unsafe) → Allow**. The "unsafe" warning appears because it's your own unverified script, and it only accesses your own sheet.)*
+![alt text](image-4.png)
 3. Click ⚙️ **Project Settings** on the left, scroll to **Script Properties**, and add two properties:
-
+![alt text](image-5.png)
    | Property | Value |
    |---|---|
    | `GEMINI_API_KEY` | your key from step 2 |
    | `SHARED_SECRET` | the random string from `makeSecret` |
 
    If you copied a friend's sheet and these already exist, **replace them with your own**.
+   ![alt text](image-6.png)
 
 ### 4. Deploy the web app
 
@@ -79,6 +85,7 @@ You need a Google account and Google Chrome.
    - **Who has access:** **Anyone** (your secret is what keeps others out)
 4. Click **Deploy** and copy the **Web app URL**. It ends in `/exec`.
    Ignore the *Library* URL; it isn't used.
+   ![alt text](image-7.png)
 
 ### 6. Install the Chrome extension
 
