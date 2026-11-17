@@ -11,3 +11,5 @@ In Apps Script Project Settings → Script Properties, add GEMINI_API_KEY with t
 function makeSecret() {
   Logger.log(Utilities.getUuid());
 }
+
+The URL runs a frozen copy of your code from when you deployed. If you change the code and clasp push, the URL keeps running the old version until you update it:
