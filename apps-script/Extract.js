@@ -52,7 +52,7 @@ function extractJobInfo(pageText, url) {
     }
 
     const data = JSON.parse(response.getContentText());
-    Logger.log('Model used: ' + data.modelVersion);
+    // Logger.log('Model used: ' + data.modelVersion);
 
     const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
     if (!text) throw new Error('Gemini returned no answer: ' + response.getContentText());

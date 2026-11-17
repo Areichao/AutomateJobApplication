@@ -4,16 +4,15 @@ const DEFAULT_REJECTION = 'N/A';
 const ROW_PER_TAB = 100;
 
 function addJobRow(job) {
-    // Get the spreadsheet, then the 'Tracking Template' tab
+    // Get the spreadsheet, then the target tab/sheet
     const ss = SpreadsheetApp.getActiveSpreadsheet();
     const sheet = getTargetSheet(ss);
-    if (!sheet) throw new Error('Sheet with this name does not exist: Tracking Template');
-    Logger.log(sheet.getName());
+    // Logger.log(sheet.getName());
 
     // Read the header row into an array like this. ['Company Name', 'Application Status', ...]
     // assume headers are on row 1. start on row one col 1
     const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
-    Logger.log(headers);   
+    // Logger.log(headers);   
     // [Company Name, Application Status, Role, Salary, Date Submitted, Link to Job Req, Rejection Reason, Notes] 
 
     // Build an empty row the same width as the headers,.
@@ -29,9 +28,9 @@ function addJobRow(job) {
     row[headers.indexOf('Rejection Reason')]   = DEFAULT_REJECTION;
     row[headers.indexOf('Notes')]              = job.notes;
 
-    Logger.log(row);
+    // Logger.log(row);
 
-    // Write the row to the next empty row (getLastRow() + 1)
+    // Write the row to the next empty row
     const newRow = getLastJobRow(sheet) + 1;
     sheet.getRange(newRow, 1, 1, row.length).setValues([row]);
 
