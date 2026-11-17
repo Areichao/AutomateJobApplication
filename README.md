@@ -97,6 +97,8 @@ You need a Google account and Google Chrome.
    const SHARED_SECRET = 'your secret from step 3';
    ```
 4. In Chrome, go to **`chrome://extensions`**, turn on **Developer mode** (top right), click **Load unpacked**, and select the `extension` folder.
+![alt text](image-8.png)
+![alt text](image-9.png)
 5. Click the 🧩 puzzle icon in the toolbar and **pin** Job Tracker.
 
 Done! 🎉
