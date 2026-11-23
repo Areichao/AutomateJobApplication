@@ -1,34 +1,22 @@
 # Job Application Tracker
 
-Track your job applications in Google Sheets with **one click**.
+Damn really made this and got a job offer the next day bruh :crying emoji:
+
+Track your job applications in Google Sheets yuhhh.
 
 When you're on a job posting, click the **Job Tracker** button in Chrome (or press **Alt+Shift+J**). A new row is added to your spreadsheet automatically:
 
-| Column | What gets filled in |
-|---|---|
-| Company Name | Read from the page by AI (Google Gemini) |
-| Application Status | `Submitted - Pending Response` |
-| Role | Read from the page by AI |
-| Salary | Read from the page by AI. If the posting lists several ranges, all of them are included |
-| Date Submitted | Today's date |
-| Link to Job Req | The page's URL |
-| Rejection Reason | `N/A` |
-| Notes | The **entire page text** (like Ctrl+A, Ctrl+C), in 1pt font so it doesn't take up space |
+Notes has everything from the page and converted to 1pt font cuz I just wanted it that way. everything else is basic details
 
-Every 100 applications, a new tab is created from your template, named `1-100`, `101-200`, `201-300`, and so on.
+Every 100 applications, a new tab is created from your template, named `1-100`, `101-200`, `201-300`, forever or smtng
 
-**It's free.** It uses Google's free Gemini API tier and Google Apps Script. Nothing runs on your computer except the Chrome extension.
+It uses Google's free Gemini API tier and Google Apps Script. (or atleast setup that way) throw in ur own API if u wanna but im too lazy to host so need to setup for use lol
 
 ---
 
 ## How it works
 
-```
-Chrome extension  ──(page text + URL + secret)──►  Your Google Apps Script web app
-                                                      │
-                                                      ├─ asks Gemini for company / role / salary
-                                                      └─ writes the row into your sheet
-```
+it just does idk
 
 - **The Chrome extension** (`extension/` folder) grabs the text of the page you're on and sends it to your web app.
 - **The Apps Script** (`apps-script/` folder) lives inside your Google Sheet. It checks the secret, asks Gemini to pull out the company, role and salary, then writes the row.
@@ -36,45 +24,50 @@ Chrome extension  ──(page text + URL + secret)──►  Your Google Apps Sc
 
 Everyone sets up **their own copy**: their own sheet, their own Gemini key, their own web app. Don't share your web app URL or secret.
 
+^ is what claude said when i told it to write a readme
+
 ---
 
 ## Setup (about 10–15 minutes, once)
 
-You need a Google account and Google Chrome.
+You need a Google account and Google Chrome. (no shit)
+I kinda threw in screenshots randomly so idek. had claude generate setup too lol
 
 ### 1. Get the spreadsheet
 
 **Copy the shared template sheet** (easiest, because the code comes with it)
 1. Open the template link you were given and click **Make a copy**. If it opens the sheet instead, use **File → Make a copy**.
 https://docs.google.com/spreadsheets/d/1Nr-5-e0G8Pw9V6XlDsSewkhDBJAYDThpSUAFoigpt_I/edit?usp=sharing
+^ this should be a blank copy i hope 
+
 2. Your copy should contain only the **Tracking Template** tab. If it has any rows or numbered tabs (`1-100`, etc.), delete them. 
 
 ### 2. Get a free Gemini API key
 
 1. Go to **https://aistudio.google.com** and sign in.
 2. Click **Get API key → Create API key**.
-![alt text](image-1.png)
-![alt text](image.png)
-![alt text](image-2.png)
+![alt text](images/image-1.png)
+![alt text](images/image.png)
+![alt text](images/image-2.png)
 3. When asked for a project, choose **Default Gemini Project**. Avoid any project that has billing turned on, or you'll be charged instead of using the free tier.
 4. Copy the key.
 
 ### 3. Save your key and a secret in the script
 
 1. In your sheet: **Extensions → Apps Script**.
-![alt text](image-3.png)
+![alt text](images/image-3.png)
 2. Make a secret: open the **Test** file, pick **`makeSecret`** in the function dropdown at the top, and click **▶ Run**. Copy the long random string from the log at the bottom.
    *(The first time you run anything, Google asks for permission. Click **Review permissions → your account → Advanced → Go to … (unsafe) → Allow**. The "unsafe" warning appears because it's your own unverified script, and it only accesses your own sheet.)*
-![alt text](image-4.png)
+![alt text](images/image-4.png)
 3. Click ⚙️ **Project Settings** on the left, scroll to **Script Properties**, and add two properties:
-![alt text](image-5.png)
+![alt text](images/image-5.png)
    | Property | Value |
    |---|---|
    | `GEMINI_API_KEY` | your key from step 2 |
    | `SHARED_SECRET` | the random string from `makeSecret` |
 
    If you copied a friend's sheet and these already exist, **replace them with your own**.
-   ![alt text](image-6.png)
+   ![alt text](images/image-6.png)
 
 ### 4. Deploy the web app
 
@@ -86,7 +79,7 @@ https://docs.google.com/spreadsheets/d/1Nr-5-e0G8Pw9V6XlDsSewkhDBJAYDThpSUAFoigp
    - **Who has access:** **Anyone** (your secret is what keeps others out)
 4. Click **Deploy** and copy the **Web app URL**. It ends in `/exec`.
    Ignore the *Library* URL; it isn't used.
-   ![alt text](image-7.png)
+   ![alt text](images/image-7.png)
 
 ### 6. Install the Chrome extension
 
@@ -98,11 +91,11 @@ https://docs.google.com/spreadsheets/d/1Nr-5-e0G8Pw9V6XlDsSewkhDBJAYDThpSUAFoigp
    const SHARED_SECRET = 'your secret from step 3';
    ```
 4. In Chrome, go to **`chrome://extensions`**, turn on **Developer mode** (top right), click **Load unpacked**, and select the `extension` folder.
-![alt text](image-8.png)
-![alt text](image-9.png)
+![alt text](images/image-8.png)
+![alt text](images/image-9.png)
 5. Click the 🧩 puzzle icon in the toolbar and **pin** Job Tracker.
 
-Done! 🎉
+Done! yayyyyy
 
 ---
 
@@ -119,6 +112,8 @@ If the AI gets the company, role or salary wrong, just fix the cell. The full po
 ---
 
 ## Troubleshooting
+
+Thank god for ai cuz i hate writing readme's so much
 
 | What you see | What it means / what to do |
 |---|---|
@@ -137,6 +132,8 @@ If the AI gets the company, role or salary wrong, just fix the cell. The full po
 
 ## Updating the code
 
+this is just personal reference atp
+
 The web app URL runs a **frozen copy** of the code from when you deployed it. After changing any Apps Script code:
 
 1. **Deploy → Manage deployments**
@@ -152,6 +149,8 @@ After changing any **extension** file, click ↻ **reload** on the extension's c
 
 ## Customizing
 
+gemini lite works fine for this tbh
+
 | Want to change… | Where |
 |---|---|
 | Rows per tab (default 100) | `ROW_PER_TAB` in `apps-script/Sheet.js` |
@@ -162,33 +161,9 @@ After changing any **extension** file, click ↻ **reload** on the extension's c
 
 ---
 
-## Project files
-
-```
-apps-script/          Code that lives in your Google Sheet
-  Sheet.js            Writes rows, picks/creates the right numbered tab
-  Extract.js          Asks Gemini for company / role / salary
-  Webapp.js           doPost: receives pages from the extension, checks the secret
-  Test.js             Test functions (testAddRow, testExtract, testWebApp) + makeSecret
-  appsscript.json     Apps Script settings (timezone, runtime)
-extension/            The Chrome extension
-  manifest.json       Extension name, permissions, keyboard shortcut
-  popup.html/.js      The popup: grabs page text, sends it, shows the result
-  config.example.js   Template for config.js
-  config.js           YOUR URL + secret (git-ignored, never commit it)
-```
-
----
-
-## Privacy & cost
-
-- **Cost:** $0 on Gemini's free tier. Free tiers have daily limits that are far more than anyone applies to in a day. Google can change free-tier terms, so check https://aistudio.google.com if something stops working.
-- **Privacy:** the text of each job page you save is sent to Google Gemini. On the free tier, Google may use it to improve its models. Job postings are public, but don't click the button on pages with personal info (e.g. your filled-in application form).
-- The extension can read **only the tab you click it on, only when you click**. It doesn't see your other tabs or browsing.
-
----
-
 ## For developers: editing locally with clasp
+
+this is just generally syncing google app to your vsc an shi
 
 You can edit the Apps Script code in VS Code instead of the browser using [clasp](https://github.com/google/clasp):
 
