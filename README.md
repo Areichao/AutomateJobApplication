@@ -1,6 +1,6 @@
 # Job Application Tracker
 
-Damn really made this and got a job offer the next day bruh :crying emoji:
+FEW HOURS TO AUTOMATE A 10 SECOND TASK ONG Damn really made this and got a job offer the next day bruh :crying emoji:
 
 Track your job applications in Google Sheets yuhhh.
 
